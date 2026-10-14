@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project — Lisa Apers</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html">Lisa Apers</a>
+      <a href="about.html">About</a>
+    </header>
+    <main class="project-page" id="project-page">
+      <div id="project-concrete">
+        <div class="project-meta">
+          <div class="project-heading">
+            <p class="project-title">CONCRETE WINE GLASS</p>
+            <div class="project-specs">
+              <p>Concrete and glass</p>
+              <p>7.5 cm x 7.5 cm x 37.5 cm</p>
+              <p>2.2 kg</p>
+            </div>
+          </div>
+          <p class="project-year">2019 (reproduced in 2024)</p>
+        </div>
+        <div class="project-body">
+          <div class="project-copy-col">
+            <div class="project-copy project-copy-tight">
+              <p>What makes art, art? Does it reside in the curation, or is there no art at all?</p>
+              <p>Concrete Wine Glasses merges the artworks with the peripheral elements and activities of the exhibition space. As the focus shifts from art to wine drinking, the objects fade into each other.</p>
+              <p>A concrete experience of discomfort, set against the elegance of the gallery opening.</p>
+            </div>
+          </div>
+          <div class="project-figures project-figures-concrete">
+            <div class="project-figure">
+              <img src="assets/concrete-frame-1.png" alt="A wine glass set into a concrete block" width="450" height="600">
+            </div>
+            <div class="project-figure">
+              <img src="assets/concrete-closeup.png" alt="Close view of the glass stem set into the concrete block" width="800" height="516">
+            </div>
+            <div class="project-figure">
+              <img src="assets/concrete-frame-3.png" alt="The concrete wine glass against a white wall" width="450" height="600">
+            </div>
+            <div class="project-figure">
+              <img src="assets/concrete-hand.png" alt="A hand holding a concrete wine glass with wine in it" width="800" height="599">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="project-generic" hidden>
+        <div class="project-meta">
+          <p class="project-title">TITLE</p>
+          <div class="project-specs">
+            <p>Plaster</p>
+            <p>10cm x 6cm</p>
+            <p>300 gr</p>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-copy-col">
+            <div class="project-copy">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          <div class="project-figures">
+            <div class="project-figure" role="img" aria-label="Project image 1"></div>
+            <div class="project-figure" role="img" aria-label="Project image 2"></div>
+            <div class="project-figure" role="img" aria-label="Project image 3"></div>
+            <div class="project-figure" role="img" aria-label="Project image 4"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <p>© 2026 All rights reserved</p>
+      <a href="about.html#contact-heading">Hesitate to contact</a>
+    </footer>
+    <script>
+      const shades = ["#c4c4c4", "#8a8a8a", "#e6e6e6", "#5e5e5e"];
+      const number = Number(new URLSearchParams(location.search).get("project")) || 1;
+      const concrete = document.querySelector("#project-concrete");
+      const generic = document.querySelector("#project-generic");
+
+      if (number === 1) {
+        generic.hidden = true;
+        document.title = "Concrete Wine Glass — Lisa Apers";
+      } else {
+        concrete.hidden = true;
+        generic.hidden = false;
+        const index = number >= 1 && number <= shades.length ? number - 1 : 0;
+        document.querySelector("#project-page").style.setProperty("--shade", shades[index]);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About — Lisa Apers</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html">Lisa Apers</a>
+      <a href="about.html" aria-current="page">About</a>
+    </header>
+    <main class="about-main">
+      <div class="about-column">
+        <div class="intro">
+          <div class="portrait">
+            <img src="assets/portrait.jpg" alt="Portrait of Lisa Apers" width="2202" height="2936">
+          </div>
+          <div class="bio">
+            <p>Lisa Apers is a Belgian visual artist based in Denmark, working across sculpture, installation and various media.</p>
+            <p>Her practice looks at the ways we organise everyday life in the objects we surround ourselves with, the habits we adopt and the norms we rarely question.</p>
+            <p>Working with familiar forms and materials, she shifts their function, context or meaning to create moments of friction, humour and ambiguity. The work often sits somewhere between the ordinary and the slightly strange, inviting a closer look at what we consider normal.</p>
+          </div>
+        </div>
+        <section class="contact" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">CONTACT</h2>
+          <div class="contact-list">
+            <div class="contact-email">
+              <button type="button" class="copy-email" id="copy-email" aria-describedby="copy-tooltip">lisa.apers@icloud.com</button>
+              <span class="copy-tooltip" id="copy-tooltip" role="tooltip">
+                <img src="assets/copy.svg" alt="" width="14" height="14">
+                <span id="copy-tooltip-text">Click to copy</span>
+              </span>
+            </div>
+            <a id="instagram" href="https://www.instagram.com/lisa_apers/" target="_blank" rel="noopener noreferrer">@lisa_apers</a>
+          </div>
+        </section>
+        <section class="cv" aria-labelledby="cv-heading">
+          <h2 id="cv-heading">C.V.</h2>
+          <div class="cv-list">
+            <article class="cv-entry">
+              <time datetime="2026">2026</time>
+              <div>
+                <p>Scholarship, Detour</p>
+                <p>Frédéric Forest</p>
+              </div>
+            </article>
+            <article class="cv-entry">
+              <time datetime="2025">2025</time>
+              <div>
+                <p>Exhibition, Dingen die niet verkopen</p>
+                <p>Antwerp, Belgium</p>
+              </div>
+            </article>
+            <article class="cv-entry">
+              <time datetime="2023">2023</time>
+              <div>
+                <p>Vernissage, Residence 25</p>
+                <p>Rødby, Denmark</p>
+              </div>
+            </article>
+            <article class="cv-entry">
+              <time datetime="2019">2019</time>
+              <div>
+                <p>Vernissage, Concrete wineglasses</p>
+                <p>Copenhagen, Denmark</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script>
+      const email = "lisa.apers@icloud.com";
+      const copyButton = document.querySelector("#copy-email");
+      const tooltip = document.querySelector("#copy-tooltip");
+      const tooltipText = document.querySelector("#copy-tooltip-text");
+      const emailWrap = document.querySelector(".contact-email");
+      let tooltipTimer = 0;
+
+      function resetTooltip() {
+        window.clearTimeout(tooltipTimer);
+        tooltip.classList.remove("is-visible");
+        tooltipText.textContent = "Click to copy";
+      }
+
+      function showCopied() {
+        tooltipText.textContent = "Copied!";
+        tooltip.classList.add("is-visible");
+        window.clearTimeout(tooltipTimer);
+        tooltipTimer = window.setTimeout(function () {
+          if (!emailWrap.matches(":hover")) resetTooltip();
+        }, 1500);
+      }
+
+      function copyWithSelection() {
+        const field = document.createElement("textarea");
+        field.value = email;
+        field.style.position = "fixed";
+        field.style.top = "0";
+        field.style.left = "0";
+        field.style.width = "1px";
+        field.style.height = "1px";
+        field.style.padding = "0";
+        field.style.border = "0";
+        document.body.appendChild(field);
+        field.focus();
+        field.select();
+        field.setSelectionRange(0, email.length);
+        let copied = false;
+        try {
+          copied = document.execCommand("copy");
+        } catch (error) {
+          copied = false;
+        }
+        field.remove();
+        return copied;
+      }
+
+      copyButton.addEventListener("click", function () {
+        if (copyWithSelection()) {
+          showCopied();
+          return;
+        }
+
+        if (!navigator.clipboard || !navigator.clipboard.writeText) return;
+
+        navigator.clipboard.writeText(email).then(showCopied).catch(function () {});
+      });
+
+      emailWrap.addEventListener("mouseleave", resetTooltip);
+
+      document.querySelector("#instagram").addEventListener("click", function (event) {
+        const mobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        if (!mobile) return;
+
+        event.preventDefault();
+        const openedAt = Date.now();
+        window.location.href = "instagram://user?username=lisa_apers";
+        window.setTimeout(function () {
+          if (document.visibilityState === "visible" && Date.now() - openedAt < 1600) {
+            window.open("https://www.instagram.com/lisa_apers/", "_blank", "noopener");
+          }
+        }, 700);
+      });
+    </script>
+  </body>
+</html>
