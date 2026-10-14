@@ -48,6 +48,37 @@
           </div>
         </div>
       </div>
+      <div id="project-untitled" hidden>
+        <div class="project-meta">
+          <div class="project-heading">
+            <p class="project-title">UNTITLED</p>
+            <div class="project-specs">
+              <p>Clay</p>
+              <p>12 cm x 16 cm x 4.5 cm</p>
+              <p>?</p>
+            </div>
+          </div>
+          <p class="project-year">2025</p>
+        </div>
+        <div class="project-body">
+          <div class="project-copy-col">
+            <div class="project-copy project-copy-tight">
+              <p>Form study in clay</p>
+            </div>
+          </div>
+          <div class="project-figures project-figures-untitled">
+            <div class="project-figure">
+              <img src="assets/untitled-1.png" alt="Two dark clay reliefs on a white brick wall" width="450" height="600">
+            </div>
+            <div class="project-figure">
+              <img src="assets/untitled-2.png" alt="The two clay reliefs seen from the front" width="1000" height="645">
+            </div>
+            <div class="project-figure">
+              <img src="assets/untitled-3.png" alt="The clay reliefs seen from the side" width="450" height="600">
+            </div>
+          </div>
+        </div>
+      </div>
       <div id="project-generic" hidden>
         <div class="project-meta">
           <p class="project-title">TITLE</p>
@@ -86,11 +117,15 @@
       const shades = ["#c4c4c4", "#8a8a8a", "#e6e6e6", "#5e5e5e"];
       const number = Number(new URLSearchParams(location.search).get("project")) || 1;
       const concrete = document.querySelector("#project-concrete");
+      const untitled = document.querySelector("#project-untitled");
       const generic = document.querySelector("#project-generic");
 
       if (number === 1) {
-        generic.hidden = true;
         document.title = "Concrete Wine Glass — Lisa Apers";
+      } else if (number === 2) {
+        concrete.hidden = true;
+        untitled.hidden = false;
+        document.title = "Untitled — Lisa Apers";
       } else {
         concrete.hidden = true;
         generic.hidden = false;
