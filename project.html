@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project — Lisa Apers</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=925-page">
   </head>
   <body>
     <header class="site-header">
@@ -79,6 +79,37 @@
           </div>
         </div>
       </div>
+      <div id="project-925" hidden>
+        <div class="project-meta">
+          <div class="project-heading">
+            <p class="project-title">925</p>
+            <div class="project-specs">
+              <p>Glass, plastic, paper</p>
+              <p>28 cm x 28 cm x 4 cm</p>
+              <p>500 g</p>
+            </div>
+          </div>
+          <p class="project-year">2024</p>
+        </div>
+        <div class="project-body">
+          <div class="project-copy-col">
+            <div class="project-copy project-copy-tight">
+              <p>As we move through our nine-to-fives, we often forget that a regular work day only takes up eight hours of the day. The rest is ours to shape. The 925 clock challenges the constant pursuit of efficiency in a productivity centred society, inviting us to reconsider how we perceive and allocate our days. Rather than letting our lives revolve around our jobs and “staying productive", it recognises the importance of time necessary to spend for one to simply be, and allows the viewer to do so in an alternate timezone.</p>
+            </div>
+          </div>
+          <div class="project-figures project-figures-925">
+            <div class="project-figure">
+              <img src="assets/925-1.png" alt="A person reaching toward a 925 clock on a white brick wall" width="450" height="600">
+            </div>
+            <div class="project-figure">
+              <img src="assets/925-2.png" alt="Close view of the 925 clock face" width="869" height="645">
+            </div>
+            <div class="project-figure">
+              <img src="assets/925-3.png" alt="The 925 clock on a white brick wall" width="450" height="600">
+            </div>
+          </div>
+        </div>
+      </div>
       <div id="project-generic" hidden>
         <div class="project-meta">
           <p class="project-title">TITLE</p>
@@ -118,6 +149,7 @@
       const number = Number(new URLSearchParams(location.search).get("project")) || 1;
       const concrete = document.querySelector("#project-concrete");
       const untitled = document.querySelector("#project-untitled");
+      const nineTwoFive = document.querySelector("#project-925");
       const generic = document.querySelector("#project-generic");
 
       if (number === 1) {
@@ -126,6 +158,10 @@
         concrete.hidden = true;
         untitled.hidden = false;
         document.title = "Untitled — Lisa Apers";
+      } else if (number === 3) {
+        concrete.hidden = true;
+        nineTwoFive.hidden = false;
+        document.title = "925 — Lisa Apers";
       } else {
         concrete.hidden = true;
         generic.hidden = false;

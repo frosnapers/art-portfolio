@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lisa Apers</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=925-hover">
   </head>
   <body class="home">
     <div class="page">
@@ -21,14 +21,18 @@
           <p>Untitled</p>
           <p>2025</p>
         </div>
+        <div class="home-caption" data-caption="925">
+          <p>925</p>
+          <p>2024</p>
+        </div>
       </div>
       <section class="project" aria-label="Selected projects">
         <div class="project-stage">
           <div class="project-strip">
             <div class="project-track" id="project-track">
-              <a class="project-thumb" href="project.html?project=1" data-caption="wine" aria-label="Concrete Wine Glass"><img src="assets/home-thumb-2.jpg" alt="" width="227" height="312"></a>
+              <a class="project-thumb" href="project.html?project=3" data-caption="925" aria-label="925"><img src="assets/home-thumb-925.png" alt="" width="227" height="312"></a>
               <a class="project-thumb" href="project.html?project=2" data-caption="untitled" aria-label="Untitled"><img src="assets/home-thumb-untitled.png" alt="" width="227" height="312"></a>
-              <a class="project-thumb" href="project.html?project=3" style="background:#c4c4c4" aria-label="Project 3"></a>
+              <a class="project-thumb" href="project.html?project=1" data-caption="wine" aria-label="Concrete Wine Glass"><img src="assets/home-thumb-2.jpg" alt="" width="227" height="312"></a>
               <a class="project-thumb" href="project.html?project=4" style="background:#c4c4c4" aria-label="Project 4"></a>
               <a class="project-thumb" href="project.html?project=2" style="background:#c4c4c4" aria-label="Project 2"></a>
               <a class="project-thumb" href="project.html?project=3" style="background:#c4c4c4" aria-label="Project 3"></a>
@@ -44,5 +48,17 @@
         </footer>
       </section>
     </div>
+    <script>
+      const thumbs = document.querySelectorAll(".project-thumb[data-caption]");
+      const show = (caption) => document.body.setAttribute("data-hover-caption", caption);
+      const hide = () => document.body.removeAttribute("data-hover-caption");
+      thumbs.forEach((thumb) => {
+        const caption = thumb.getAttribute("data-caption");
+        thumb.addEventListener("pointerenter", () => show(caption));
+        thumb.addEventListener("pointerleave", hide);
+        thumb.addEventListener("focus", () => show(caption));
+        thumb.addEventListener("blur", hide);
+      });
+    </script>
   </body>
 </html>

@@ -102,7 +102,12 @@ button:focus-visible {
 .home:has(.project-thumb[data-caption="wine"]:hover) .home-caption[data-caption="wine"],
 .home:has(.project-thumb[data-caption="wine"]:focus-visible) .home-caption[data-caption="wine"],
 .home:has(.project-thumb[data-caption="untitled"]:hover) .home-caption[data-caption="untitled"],
-.home:has(.project-thumb[data-caption="untitled"]:focus-visible) .home-caption[data-caption="untitled"] {
+.home:has(.project-thumb[data-caption="untitled"]:focus-visible) .home-caption[data-caption="untitled"],
+.home:has(.project-thumb[data-caption="925"]:hover) .home-caption[data-caption="925"],
+.home:has(.project-thumb[data-caption="925"]:focus-visible) .home-caption[data-caption="925"],
+.home[data-hover-caption="wine"] .home-caption[data-caption="wine"],
+.home[data-hover-caption="untitled"] .home-caption[data-caption="untitled"],
+.home[data-hover-caption="925"] .home-caption[data-caption="925"] {
   visibility: visible;
 }
 
@@ -340,6 +345,7 @@ button:focus-visible {
 
 #project-concrete:not([hidden]),
 #project-untitled:not([hidden]),
+#project-925:not([hidden]),
 #project-generic:not([hidden]) {
   display: flex;
   flex-direction: column;
@@ -433,7 +439,8 @@ button:focus-visible {
 }
 
 #project-concrete .project-heading,
-#project-untitled .project-heading {
+#project-untitled .project-heading,
+#project-925 .project-heading {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -446,12 +453,16 @@ button:focus-visible {
 #project-concrete .project-year,
 #project-untitled .project-title,
 #project-untitled .project-specs,
-#project-untitled .project-year {
+#project-untitled .project-year,
+#project-925 .project-title,
+#project-925 .project-specs,
+#project-925 .project-year {
   line-height: normal;
 }
 
 #project-concrete .project-specs,
-#project-untitled .project-specs {
+#project-untitled .project-specs,
+#project-925 .project-specs {
   margin-left: 0;
   width: auto;
   max-width: 383px;
@@ -460,12 +471,14 @@ button:focus-visible {
 }
 
 #project-concrete .project-specs p + p,
-#project-untitled .project-specs p + p {
+#project-untitled .project-specs p + p,
+#project-925 .project-specs p + p {
   margin-top: 0;
 }
 
 #project-concrete .project-year,
-#project-untitled .project-year {
+#project-untitled .project-year,
+#project-925 .project-year {
   margin-top: 0;
   margin-left: auto;
   width: min(383px, 100%);
@@ -534,6 +547,41 @@ button:focus-visible {
 }
 
 .project-figures-untitled .project-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+#project-925 .project-copy-col {
+  flex: 1 1 0;
+  max-width: none;
+}
+
+.project-figures-925 {
+  flex: none;
+  gap: 10px;
+  width: min(869px, 100%);
+  max-width: 869px;
+  padding-bottom: 0;
+}
+
+.project-figures-925 .project-figure {
+  height: auto;
+  aspect-ratio: auto;
+  background: transparent;
+}
+
+.project-figures-925 .project-figure:nth-child(1),
+.project-figures-925 .project-figure:nth-child(3) {
+  width: calc(450 / 869 * 100%);
+}
+
+.project-figures-925 .project-figure:nth-child(2) {
+  width: 100%;
+}
+
+.project-figures-925 .project-figure img {
   display: block;
   width: 100%;
   height: auto;
