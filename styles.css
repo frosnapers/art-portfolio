@@ -137,6 +137,16 @@ button:focus-visible {
   overflow: hidden;
 }
 
+@media (max-width: 1366px) {
+  .project-strip {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+}
+
 .project-track {
   display: flex;
   gap: 10px;
@@ -600,5 +610,9 @@ button:focus-visible {
     width: 100%;
     max-width: none;
     margin-left: 0;
+  }
+
+  .project-figures {
+    align-items: flex-start;
   }
 }
